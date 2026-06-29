@@ -1,0 +1,98 @@
+export interface CommandDef {
+  command: string;
+  description: string;
+  category: string;
+  permission: "all" | "admin" | "owner";
+}
+
+export const COMMANDS: CommandDef[] = [
+  // === ENTRETENIMIENTO (todos) ===
+  { command: ".menu", description: "Muestra todos los comandos disponibles", category: "General", permission: "all" },
+  { command: ".ping", description: "Verifica que el bot esté activo", category: "General", permission: "all" },
+  { command: ".dado", description: "Lanza un dado (1-6)", category: "General", permission: "all" },
+  { command: ".moneda", description: "Cara o Cruz", category: "General", permission: "all" },
+  { command: ".8ball", description: "Pregunta al oráculo: .8ball <pregunta>", category: "General", permission: "all" },
+  { command: ".calc", description: "Calculadora: .calc 25 * 4 + 10", category: "General", permission: "all" },
+  { command: ".chiste", description: "Chiste aleatorio", category: "General", permission: "all" },
+  { command: ".frase", description: "Frase motivacional aleatoria", category: "General", permission: "all" },
+  { command: ".gay", description: "Medidor gay: .gay [nombre]", category: "General", permission: "all" },
+  { command: ".ship", description: "Compatibilidad amorosa: .ship <p1> <p2>", category: "General", permission: "all" },
+  { command: ".hora", description: "Hora actual en varias zonas del mundo", category: "General", permission: "all" },
+  { command: ".say", description: "El bot dice algo: .say <texto>", category: "General", permission: "all" },
+  { command: ".clima", description: "Clima real de una ciudad: .clima <ciudad>", category: "General", permission: "all" },
+  { command: ".play", description: "Reproduce una canción de YouTube: .play <canción>", category: "General", permission: "all" },
+
+  // === STICKERS (todos) ===
+  { command: ".s", description: "Crea sticker desde imagen respondida", category: "Stickers", permission: "all" },
+  { command: ".brat", description: "Sticker animado con texto: .brat <texto>", category: "Stickers", permission: "all" },
+  { command: ".wm", description: "Watermark en sticker: .wm [nombre] (responde sticker)", category: "Stickers", permission: "all" },
+  { command: ".toimg", description: "Convierte sticker en imagen (responde sticker)", category: "Stickers", permission: "all" },
+
+  // === GRUPO (admins del grupo + owners del bot) ===
+  { command: ".n", description: "Notifica a todos sin mostrar nombres: .n <mensaje>", category: "Grupo", permission: "admin" },
+  { command: ".todos", description: "Menciona a todos del grupo con @", category: "Grupo", permission: "admin" },
+  { command: ".hidetag", description: "Etiqueta oculta a todos: .hidetag <mensaje>", category: "Grupo", permission: "admin" },
+  { command: "/kick", description: "Expulsa a un miembro (responde su mensaje)", category: "Grupo", permission: "admin" },
+  { command: ".del", description: "Borra el mensaje respondido del grupo", category: "Grupo", permission: "admin" },
+  { command: ".promote", description: "Da admin (responde su mensaje)", category: "Grupo", permission: "admin" },
+  { command: ".demote", description: "Quita admin (responde su mensaje)", category: "Grupo", permission: "admin" },
+  { command: "/antilink", description: "Activa: expulsa quien mande links", category: "Grupo", permission: "admin" },
+  { command: "/on", description: "Desactiva antilink", category: "Grupo", permission: "admin" },
+  { command: ".mute", description: "Solo admins pueden enviar mensajes", category: "Grupo", permission: "admin" },
+  { command: ".unmute", description: "Todos pueden enviar mensajes", category: "Grupo", permission: "admin" },
+  { command: ".setname", description: "Cambia el nombre del grupo: .setname <nombre>", category: "Grupo", permission: "admin" },
+  { command: ".setdesc", description: "Cambia la descripción: .setdesc <descripción>", category: "Grupo", permission: "admin" },
+  { command: ".warn", description: "Advierte a un miembro (3 warns = kick): .warn (responde)", category: "Grupo", permission: "admin" },
+  { command: ".warnsreset", description: "Reinicia los warns de un miembro (responde)", category: "Grupo", permission: "admin" },
+
+  // === OWNER DEL BOT (solo dueños del bot) ===
+  { command: "/activar", description: "Activa el bot en este grupo", category: "Owner", permission: "owner" },
+  { command: "/desactivar", description: "Desactiva el bot en este grupo", category: "Owner", permission: "owner" },
+  { command: "/off", description: "Apaga el bot globalmente", category: "Owner", permission: "owner" },
+  { command: "/restart", description: "Reinicia la conexión del bot", category: "Owner", permission: "owner" },
+  { command: ".auto", description: "El owner se da admin a sí mismo en el grupo", category: "Owner", permission: "owner" },
+  { command: "/kickall", description: "Expulsa a todos menos al bot y owners", category: "Owner", permission: "owner" },
+  { command: ".q", description: "Limpia los mensajes del grupo", category: "Owner", permission: "owner" },
+  { command: "/ban", description: "Bloquea usuario del bot: /ban (responde)", category: "Owner", permission: "owner" },
+  { command: "/unban", description: "Desbloquea usuario del bot: /unban (responde)", category: "Owner", permission: "owner" },
+  { command: "/addowner", description: "Agrega owner temporal: /addowner <número>", category: "Owner", permission: "owner" },
+  { command: "/broadcast", description: "Mensaje a todos los grupos activos: /broadcast <msg>", category: "Owner", permission: "owner" },
+  { command: "/stats", description: "Estadísticas detalladas del bot", category: "Owner", permission: "owner" },
+  { command: "/owner", description: "Muestra los owners (privado)", category: "Owner", permission: "owner" },
+
+  // === EXTRA GENERAL (todos) ===
+  { command: ".tagall", description: "Menciona a todos (alias de .todos)", category: "Grupo", permission: "admin" },
+  { command: ".id", description: "Muestra tu JID y el ID del grupo", category: "General", permission: "all" },
+  { command: ".info", description: "Información del bot", category: "General", permission: "all" },
+  { command: ".nivel", description: "Muestra tu rol y nivel en el grupo", category: "General", permission: "all" },
+  { command: ".sticker", description: "Alias de .s — crea sticker desde imagen", category: "Stickers", permission: "all" },
+  { command: ".encuesta", description: "Crea encuesta: .encuesta <pregunta> | <op1> | <op2>", category: "Grupo", permission: "admin" },
+  { command: ".reglas", description: "Muestra las reglas del grupo", category: "General", permission: "all" },
+
+  // === EXTRA ADMIN ===
+  { command: ".setreglas", description: "Establece las reglas del grupo: .setreglas <texto>", category: "Grupo", permission: "admin" },
+  { command: ".link", description: "Obtiene el link de invitación del grupo", category: "Grupo", permission: "admin" },
+  { command: ".revokelink", description: "Revoca el link actual y genera uno nuevo", category: "Grupo", permission: "admin" },
+  { command: ".listwarn", description: "Muestra advertencias de un miembro (responde)", category: "Grupo", permission: "admin" },
+
+  // === EXTRA OWNER ===
+  { command: "/add", description: "Agrega a alguien al grupo: /add <número>", category: "Owner", permission: "owner" },
+  { command: "/removeowner", description: "Remueve owner temporal: /removeowner <número>", category: "Owner", permission: "owner" },
+  { command: "/banlist", description: "Muestra lista de usuarios baneados del bot", category: "Owner", permission: "owner" },
+  { command: "/globalon", description: "Reactiva el bot globalmente (reversa de /off)", category: "Owner", permission: "owner" },
+  { command: ".grupos", description: "Lista todos los grupos donde Annie Bot está activa", category: "Owner", permission: "owner" },
+  { command: ".clearmsg", description: "Limpia mensajes propios del bot en el grupo", category: "Owner", permission: "owner" },
+  { command: ".lol", description: "Quita admin a TODOS en el grupo excepto el bot y los owners", category: "Owner", permission: "owner" },
+
+  // === OSINT / CIBERSEGURIDAD (solo owners del bot) ===
+  { command: ".iker", description: "Info pública de número: .iker <número>", category: "OSINT", permission: "owner" },
+  { command: ".phone", description: "OSINT completo de número telefónico", category: "OSINT", permission: "owner" },
+  { command: ".email", description: "OSINT de correo electrónico: .email <email>", category: "OSINT", permission: "owner" },
+  { command: ".ip", description: "Geolocalización y datos de IP: .ip <ip>", category: "OSINT", permission: "owner" },
+  { command: ".dox", description: "Fuentes de registros públicos por país: .dox <país>", category: "OSINT", permission: "owner" },
+  { command: ".osint", description: "Guía OSINT completa de un objetivo: .osint <objetivo>", category: "OSINT", permission: "owner" },
+  { command: ".redessociales", description: "Búsqueda en redes sociales: .redessociales <usuario>", category: "OSINT", permission: "owner" },
+  { command: ".audit", description: "Guía de auditoría de seguridad web para dominio", category: "OSINT", permission: "owner" },
+  { command: ".whois", description: "Búsqueda WHOIS de dominio: .whois <dominio>", category: "OSINT", permission: "owner" },
+  { command: ".metadatos", description: "Análisis de metadatos de archivos públicos", category: "OSINT", permission: "owner" },
+];
